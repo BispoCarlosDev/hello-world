@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { StringifyOptions } from 'querystring'
 
 export default class Veiculo extends BaseModel {
   @column({ isPrimary: true })
@@ -25,6 +26,9 @@ export default class Veiculo extends BaseModel {
 
   @column()
   declare cor: string
+
+  @column()
+  declare situacao: string
 
   @column()
   declare ativo: boolean

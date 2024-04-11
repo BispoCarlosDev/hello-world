@@ -14,35 +14,52 @@
       <div class="card-body">
         <h4 class="card-title">Cadastrar Novo Veículo</h4>
         <p class="card-description"> Informações do Veículo </p>
-        <form class="forms-sample">
+
+        <form class="forms-sample" method="POST" action="{{route('veiculos.store')}}">
+          
+
           <div class="form-group">
-            <label for="exampleInputName1">Marca</label>
-            <input type="text" class="form-control" id="exampleInputName1" placeholder="Ex. Fiat">
+            <label for="inputMarca">Marca</label>
+            <input type="text" class="form-control" id="inputMarca" name="marca" placeholder="Ex. Fiat">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail3">Modelo</label>
-            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Ex. Uno">
+            <label for="inputModelo">Modelo</label>
+            <input type="text" class="form-control" id="inputModelo" name="modelo" placeholder="Ex. Uno">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword4">Ano Modelo</label>
-            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Ex. 2010">
+            <label for="inputAnoModelo">Ano Modelo</label>
+            <input type="number" class="form-control" id="inputAnoModelo" name="anomodelo" placeholder="Ex. 2010">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail3">Ano Fabricação</label>
-            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Ex. 2012">
+            <label for="inputAnoFabricacao">Ano Fabricação</label>
+            <input type="number" class="form-control" id="inputAnoFabricacao" name="anofabricacao" placeholder="Ex. 2012">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword4">Renavam</label>
-            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Ex. 40028922321">
+            <label for="inputRenavam">Renavam</label>
+            <input type="number" class="form-control" id="inputRenavam" name="renavam" placeholder="Ex. 40028922321">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail3">Placa</label>
-            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Ex. NJH3245">
+            <label for="inputPlaca">Placa</label>
+            <input type="text" class="form-control" id="inputPlaca" name="placa" placeholder="Ex. NJH3245">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword4">Cor</label>
-            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Ex. Dourado">
+            <label for="inputCor">Cor</label>
+            <input type="text" class="form-control" id="inputCor" name="cor" placeholder="Ex. Dourado">
           </div>
+
+          <div class="form-group">
+            <label for="inputSituacao">Situação</label>
+
+            <select class="form-control" id="inputSituacao" name="situacao">
+              <option value="">Selecione uma Situação</option>
+              <option value="liberado">Liberado</option>
+              <option value="manutencao">Manutenção</option>
+            </select>
+
+          </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+          <button type="class" class="btn btn-dark">Cancelar</button>
           <!--
           <div class="form-group">
             <label for="exampleSelectGender">Ano de Fabricação</label>
@@ -51,7 +68,7 @@
               <option>Female</option>
             </select>
           </div>
-          -->
+          
           <div class="form-group">
             <label>File upload</label>
             <input type="file" name="img[]" class="file-upload-default">
@@ -72,6 +89,8 @@
           </div>
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
           <button class="btn btn-dark">Cancel</button>
+
+        -->
         </form>
       </div>
     </div>
