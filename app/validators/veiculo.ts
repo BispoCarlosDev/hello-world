@@ -4,6 +4,7 @@ export const messagesVeiculoProvider = new SimpleMessagesProvider({
     'required': 'O campo {{field}} é obrigatório!',
     'minLength': 'O campo {{field}} deve ter pelo menos {{min}} caracteres!',
     'withoutDecimals': 'O campo {{field}} deve ser inteiro!',
+    'min': 'O campo {{field}} deve ser no mínimo {{min}}!',
 
     'placa.regex': 'A placa deve ser no formato: AAA-8900 ou AAA-8A00!',
     'situacao.enum': 'A opção selecionada é inválida, a opção deve ser: liberado ou manutencao!',

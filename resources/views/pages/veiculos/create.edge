@@ -47,7 +47,7 @@
 
           <div class="form-group">
             <label for="inputAnoModelo">Ano Modelo</label>
-            <input type="number" class="form-control" id="inputAnoModelo" value="{{ old('anoModelo') || '' }}" name="anomodelo" placeholder="Ex. 2010">
+            <input type="number" class="form-control" id="inputAnoModelo" value="{{ old('anoModelo') || '' }}" name="anoModelo" placeholder="Ex. 2010">
 
             @inputError('anoModelo')
               <span class="text-danger"> {{ $messages.join(', ') }} </span>
@@ -58,7 +58,7 @@
 
           <div class="form-group">
             <label for="inputAnoFabricacao">Ano Fabricação</label>
-            <input type="number" class="form-control" id="inputAnoFabricacao" value="{{ old('anoFabricacao') || '' }}" name="anofabricacao" placeholder="Ex. 2012">
+            <input type="number" class="form-control" id="inputAnoFabricacao" value="{{ old('anoFabricacao') || '' }}" name="anoFabricacao" placeholder="Ex. 2012">
 
             @inputError('anoFabricacao')
               <span class="text-danger"> {{ $messages.join(', ') }} </span>
