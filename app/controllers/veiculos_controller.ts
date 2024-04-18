@@ -1,7 +1,6 @@
 import Veiculo from '#models/veiculo'
+import { createVeiculoValidator, messagesVeiculoProvider } from '#validators/veiculo';
 import type { HttpContext } from '@adonisjs/core/http'
-import { messages } from '@vinejs/vine/defaults';
-import { Session } from 'inspector';
 
 export default class VeiculosController {
   /**
@@ -10,8 +9,6 @@ export default class VeiculosController {
   async index({view}: HttpContext) {
 
     const veiculos = await Veiculo.all();
-
-    console.log('aqui', veiculos)
 
     return view.render('pages/veiculos/index', { veiculos})
   }
@@ -28,21 +25,25 @@ export default class VeiculosController {
    */
   async store({ request, response, session }: HttpContext){
 
+    const dados = request.all()
+
+    const dadosValidos = await createVeiculoValidator.validate(dados, {messagesProvider: messagesVeiculoProvider})
+
     const veiculo = await Veiculo.create({
-      marca: request.input('marca'),
-      modelo: request.input('modelo'),
-      anoFabricacao: request.input('anoFabricacao'),
-      anoModelo: request.input('anoModelo'),
+      marca: dadosValidos.marca,
+      modelo: dadosValidos.modelo,
+      anoFabricacao: dadosValidos.anoFabricacao,
+      anoModelo: dadosValidos.anoModelo,
       renavam: request.input('renavam'),
-      cor: request.input('cor'),
-      placa: request.input('placa'),
-      situacao: request.input('situacao')
+      cor: dadosValidos.cor,
+      placa: dadosValidos.placa,
+      situacao: dadosValidos.situacao
     })
 
     if(veiculo.$isPersisted) {
       session.flash('notificacao', {
         type: 'success',
-        message: `Veículo ${veiculo.modelo} cadastrado com Sucesso!`
+        message: `Veículo ${veiculo.modelo} cadastrado com Sucesso!`,
       })
     }
 
@@ -56,12 +57,12 @@ export default class VeiculosController {
   /**
    * Show individual record
    */
-  /*async show({ params }: HttpContext) {}
+  async show({ params }: HttpContext) {}
 
   /**
    * Edit individual record
    */
-  /*async edit({ params }: HttpContext) {}
+  async edit({ params }: HttpContext) {}
 
   /**
    * Handle form submission for the edit action
@@ -71,5 +72,5 @@ export default class VeiculosController {
   /**
    * Delete record
    */
-  /*async destroy({ params }: HttpContext) {}*/
+  async destroy({ params }: HttpContext) {}
 }

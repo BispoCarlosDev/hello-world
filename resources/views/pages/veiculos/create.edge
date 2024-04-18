@@ -1,60 +1,115 @@
 @layout() 
 <div class="page-header">
     <h3 class="page-title"> Cadastro de Veículos </h3>
-    <nav aria-label="breadcrumb">
+    {{--<nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Forms</a></li>
         <li class="breadcrumb-item active" aria-current="page">Cadastro de Veículos</li>
       </ol>
-    </nav>
-  </div>
+    </nav> --}}
+</div>
 
+<div class="row">
   <div class="col-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Cadastrar Novo Veículo</h4>
-        <p class="card-description"> Informações do Veículo </p>
+
+
+        {{--<h4 class="card-title">Cadastrar Novo Veículo</h4>
+        <p class="card-description"> Informações do Veículo </p>--}}
 
         <form class="forms-sample" method="POST" action="{{route('veiculos.store')}}">
+
+          {{ csrfField() }}
           
 
           <div class="form-group">
             <label for="inputMarca">Marca</label>
-            <input type="text" class="form-control" id="inputMarca" name="marca" placeholder="Ex. Fiat">
+            <input type="text" class="form-control" id="inputMarca" value="{{ old('marca') || '' }}" name="marca" placeholder="Ex. Fiat">
+
+            @inputError('marca')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           </div>
+
+
           <div class="form-group">
             <label for="inputModelo">Modelo</label>
-            <input type="text" class="form-control" id="inputModelo" name="modelo" placeholder="Ex. Uno">
+            <input type="text" class="form-control" id="inputModelo" value="{{ old('modelo') || '' }}" name="modelo" placeholder="Ex. Uno">
+
+            @inputError('modelo')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           </div>
+
+
           <div class="form-group">
             <label for="inputAnoModelo">Ano Modelo</label>
-            <input type="number" class="form-control" id="inputAnoModelo" name="anomodelo" placeholder="Ex. 2010">
+            <input type="number" class="form-control" id="inputAnoModelo" value="{{ old('anoModelo') || '' }}" name="anomodelo" placeholder="Ex. 2010">
+
+            @inputError('anoModelo')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           </div>
+
+
           <div class="form-group">
             <label for="inputAnoFabricacao">Ano Fabricação</label>
-            <input type="number" class="form-control" id="inputAnoFabricacao" name="anofabricacao" placeholder="Ex. 2012">
+            <input type="number" class="form-control" id="inputAnoFabricacao" value="{{ old('anoFabricacao') || '' }}" name="anofabricacao" placeholder="Ex. 2012">
+
+            @inputError('anoFabricacao')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           </div>
+
+
           <div class="form-group">
             <label for="inputRenavam">Renavam</label>
-            <input type="number" class="form-control" id="inputRenavam" name="renavam" placeholder="Ex. 40028922321">
+            <input type="number" class="form-control" id="inputRenavam" value="{{ old('renavam') || '' }}" name="renavam" placeholder="Ex. 40028922321">
+
+            @inputError('renavam')
+              <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           </div>
+
+
           <div class="form-group">
             <label for="inputPlaca">Placa</label>
-            <input type="text" class="form-control" id="inputPlaca" name="placa" placeholder="Ex. NJH3245">
+            <input type="text" class="form-control" id="inputPlaca" value="{{ old('placa') || '' }}" name="placa" placeholder="Ex. NJH3245">
           </div>
+
+            @inputError('placa')
+            <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           <div class="form-group">
             <label for="inputCor">Cor</label>
-            <input type="text" class="form-control" id="inputCor" name="cor" placeholder="Ex. Dourado">
+            <input type="text" class="form-control" id="inputCor" value="{{ old('cor') || '' }}" name="cor" placeholder="Ex. Dourado">
+
+            @inputError('cor')
+            <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
+
           </div>
+
 
           <div class="form-group">
             <label for="inputSituacao">Situação</label>
 
-            <select class="form-control" id="inputSituacao" name="situacao">
+            <select class="form-control" id="inputSituacao" value="{{ old('situacao') || '' }}" name="situacao">
               <option value="">Selecione uma Situação</option>
               <option value="liberado">Liberado</option>
               <option value="manutencao">Manutenção</option>
             </select>
+
+            @inputError('situacao')
+            <span class="text-danger"> {{ $messages.join(', ') }} </span>
+            @end
 
           </div>
 
@@ -95,4 +150,5 @@
       </div>
     </div>
   </div>
+</div>
 @end
